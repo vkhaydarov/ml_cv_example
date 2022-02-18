@@ -97,6 +97,9 @@ history = model.fit(ds_train_batched,
                     callbacks=[save_every_epoch_callback, early_stopping_callback, tb_callback],
                     )
 
+# Saving model
+model.save('./results/trained_model')
+
 # Print and save on disk model training history
 with open('./results/report.json', 'w', encoding='utf-8') as f:
     json.dump(history.history, f, ensure_ascii=False, indent=4)
