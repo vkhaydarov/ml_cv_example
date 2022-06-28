@@ -3,7 +3,7 @@ data:
   image_height: 32
   no_classes: 2
 training:
-  no_epochs: 500
+  no_epochs: 50
   batch_size: 512
   loss: categorical_crossentropy
   learning_rate: 0.001

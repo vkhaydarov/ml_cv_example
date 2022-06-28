@@ -4,6 +4,7 @@ from tensorflow.keras.layers import MaxPooling2D
 from tensorflow.keras.layers import Activation
 from tensorflow.keras.layers import Flatten
 from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import Dropout
 
 
 class LeNet:
@@ -13,17 +14,18 @@ class LeNet:
 		model = Sequential()
 
 		# first set of CONV => RELU => POOL layers
-		model.add(Conv2D(20, (5, 5), padding="same", input_shape=data_shape))
+		model.add(Conv2D(50, (5, 5), padding="same", input_shape=data_shape))
 		model.add(Activation("relu"))
 		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
 		# second set of CONV => RELU => POOL layers
-		model.add(Conv2D(50, (5, 5), padding="same"))
-		model.add(Activation("relu"))
-		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
+		#model.add(Conv2D(50, (5, 5), padding="same"))
+		#model.add(Activation("relu"))
+		#model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
 		# first (and only) set of FC => RELU layers
 		model.add(Flatten())
+		model.add(Dropout(0.5))
 		model.add(Dense(500))
 		model.add(Activation("relu"))
 
