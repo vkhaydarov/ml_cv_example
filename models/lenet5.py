@@ -8,29 +8,28 @@ from tensorflow.keras.layers import Dense
 
 class LeNet:
 	@staticmethod
-	def build(input_shape, classes):
-		# Model initialisation
+	def build(data_shape, label_shape):
+		# initialize the model
 		model = Sequential()
 
-		# First complex of convolutional layers (conv, activation, pooling)
-		model.add(Conv2D(filters=20, kernel_size=(5, 5), padding="same", input_shape=input_shape))
+		# first set of CONV => RELU => POOL layers
+		model.add(Conv2D(20, (5, 5), padding="same", input_shape=data_shape))
 		model.add(Activation("relu"))
 		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
-		# Second complex of convolutional layers (conv, activation, pooling)
-		model.add(Conv2D(filters=50, kernel_size=(5, 5), padding="same"))
+		# second set of CONV => RELU => POOL layers
+		model.add(Conv2D(50, (5, 5), padding="same"))
 		model.add(Activation("relu"))
 		model.add(MaxPooling2D(pool_size=(2, 2), strides=(2, 2)))
 
-		# First complex of fully connected layers (flatten, dense and activation)
+		# first (and only) set of FC => RELU layers
 		model.add(Flatten())
 		model.add(Dense(500))
 		model.add(Activation("relu"))
 
-		# Classification complex of fully connected layers (dense and activation)
 		# softmax classifier
-		model.add(Dense(classes))
+		model.add(Dense(label_shape))
 		model.add(Activation("softmax"))
 
-		# We need to return the model structure to make it integrable
+		# return the constructed network architecture
 		return model
