@@ -15,7 +15,7 @@ Thus, this project after some adaptation is supposed to be a template for simple
 ## Data
 The project expects raw data in a certain format. Each instance should consist of an image and a json file with metadata (incl. label).
 Currently, a publicly available dogs vs cats dataset is used (copyrights: https://www.microsoft.com/en-us/download/details.aspx?id=54765).
-To download already properly formatted data please use the following link: https://cloudstore.zih.tu-dresden.de/index.php/s/8bMk2LKdaPDYHfA
+To download already properly formatted data please contact @vkhaydarov
 
 The downloaded files need to be put in folder 'data' (this folder must be created by the user).
 
